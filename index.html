@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky ❤️ Subbu - Forever Yours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #1a050d;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Floating Hearts Background Animation */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            color: rgba(255, 77, 109, 0.6);
+            font-size: 20px;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
+        }
+
+        /* Edit Button (Top Right) */
+        .edit-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .edit-btn:hover {
+            background: #ff4d6d;
+            border-color: #ff4d6d;
+        }
+
+        /* Page Sections */
+        .page {
+            min-height: 100vh;
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PAGE 1: TEDDY BEAR WITH ROSES */
+        #page1 {
+            background: radial-gradient(circle at center, #4a0e24 0%, #1a050d 100%);
+        }
+
+        .teddy-wrapper {
+            position: relative;
+            width: 280px;
+            height: 300px;
+            margin: 0 auto 20px;
+            animation: bounceTeddy 3s ease-in-out infinite;
+        }
+
+        @keyframes bounceTeddy {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .ear {
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle at 30% 30%, #b5651d, #6e3509);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+        }
+        .ear::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: #e09f67;
+            border-radius: 50%;
+            position: absolute;
+            top: 18px;
+            left: 18px;
+        }
+        .ear.left { left: 30px; }
+        .ear.right { right: 30px; }
+
+        .head {
+            width: 160px;
+            height: 145px;
+            background: radial-gradient(circle at 35% 30%, #c6762b, #7a3b0b);
+            border-radius: 50%;
+            position: absolute;
+            top: 30px;
+            left: 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 -10px 20px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .eye {
+            width: 20px;
+            height: 20px;
+            background: #111;
+            border-radius: 50%;
+            position: absolute;
+            top: 52px;
+        }
+        .eye::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+        .eye.left { left: 42px; }
+        .eye.right { right: 42px; }
+
+        .muzzle {
+            width: 68px;
+            height: 52px;
+            background: #f3c69f;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 18px;
+            left: 46px;
+            box-shadow: inset 0 -4px 8px rgba(0,0,0,0.15);
+        }
+
+        .nose {
+            width: 24px;
+            height: 16px;
+            background: #2b1104;
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            left: 22px;
+        }
+
+        .mouth {
+            width: 26px;
+            height: 12px;
+            border-bottom: 3px solid #2b1104;
+            border-radius: 0 0 20px 20px;
+            position: absolute;
+            top: 24px;
+            left: 21px;
+        }
+
+        .body {
+            width: 145px;
+            height: 130px;
+            background: radial-gradient(circle at 35% 30%, #c6762b, #7a3b0b);
+            border-radius: 50% 50% 45% 45%;
+            position: absolute;
+            top: 155px;
+            left: 68px;
+            z-index: 1;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+
+        .belly {
+            width: 85px;
+            height: 85px;
+            background: #f3c69f;
+            border-radius: 50%;
+            position: absolute;
+            top: 22px;
+            left: 30px;
+        }
+
+        .arm {
+            width: 55px;
+            height: 85px;
+            background: radial-gradient(circle at 30% 30%, #b5651d, #6e3509);
+            border-radius: 30px;
+            position: absolute;
+            top: 165px;
+            z-index: 3;
+        }
+        .arm.left { left: 35px; transform: rotate(-35deg); }
+        .arm.right { right: 35px; transform: rotate(35deg); }
+
+        .leg {
+            width: 60px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #b5651d, #6e3509);
+            border-radius: 30px;
+            position: absolute;
+            bottom: 0;
+            z-index: 2;
+        }
+        .leg.left { left: 50px; }
+        .leg.right { right: 50px; }
+
+        .bouquet {
+            position: absolute;
+            top: 165px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            font-size: 55px;
+            filter: drop-shadow(0 8px 15px rgba(255, 0, 60, 0.6));
+            animation: pulseRoses 2s infinite;
+        }
+
+        @keyframes pulseRoses {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: #ff758f;
+            text-shadow: 0 4px 15px rgba(255, 77, 109, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #ffccd5;
+            max-width: 500px;
+            margin-bottom: 25px;
+        }
+
+        .btn-next {
+            background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            color: #fff;
+            border: none;
+            padding: 14px 34px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-next:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.8);
+        }
+
+        /* PAGE 2 & PAGE 3: LOVE BACKGROUNDS & PHOTO GALLERIES */
+        #page2 {
+            background: radial-gradient(circle at top right, #590d22, #1a050d);
+        }
+
+        #page3 {
+            background: radial-gradient(circle at bottom left, #590d22, #1a050d);
+        }
+
+        .couple-name-banner {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 117, 143, 0.4);
+            padding: 15px 35px;
+            border-radius: 50px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .couple-name-banner h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 950px;
+            margin: 20px 0;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 12px 12px 25px 12px;
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: block;
+            background-color: #333;
+        }
+
+        .photo-card p {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.6rem;
+            color: #ffccd5;
+        }
+
+        /* PAGE 4: MARRIAGE PROPOSAL & LOVE QUOTES */
+        #page4 {
+            background: radial-gradient(circle at center, #641220 0%, #14020a 100%);
+        }
+
+        .proposal-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 117, 143, 0.5);
+            border-radius: 25px;
+            padding: 40px 30px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .ring-icon {
+            font-size: 65px;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: ringGlow 2s infinite alternate;
+        }
+
+        @keyframes ringGlow {
+            from { transform: scale(1); filter: drop-shadow(0 0 10px gold); }
+            to { transform: scale(1.15); filter: drop-shadow(0 0 25px #ffd700); }
+        }
+
+        .proposal-heading {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #ff758f;
+            margin-bottom: 15px;
+        }
+
+        .proposal-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #fff0f3;
+            margin-bottom: 25px;
+        }
+
+        .quotes-section {
+            background: rgba(0, 0, 0, 0.35);
+            border-left: 4px solid #ff4d6d;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .quotes-section p {
+            font-style: italic;
+            color: #ffccd5;
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+        }
+
+        .quotes-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .proposal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes {
+            background: linear-gradient(45deg, #2ec4b6, #009688);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(46, 196, 182, 0.5);
+            transition: 0.3s;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        #yes-response {
+            display: none;
+            margin-top: 25px;
+            font-size: 1.4rem;
+            color: #ffd166;
+            font-weight: 600;
+            animation: fadeIn 0.6s ease;
+        }
+
+        /* Customization Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #2b0916;
+            border: 1px solid #ff4d6d;
+            padding: 25px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: #ff758f;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #ffccd5;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ff4d6d;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Top Right Customize Button -->
+    <button class="edit-btn" onclick="openModal()">✨ Edit Names & Pics</button>
+
+    <!-- PAGE 1: TEDDY BEAR WITH ROSES -->
+    <section class="page active" id="page1">
+        <div class="teddy-wrapper">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="head">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+                <div class="muzzle">
+                    <div class="nose"></div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            <div class="body">
+                <div class="belly"></div>
+            </div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="bouquet">💐🌹🌹</div>
+            <div class="leg left"></div>
+            <div class="leg right"></div>
+        </div>
+
+        <h1 class="script-title">A Special Gift For You...</h1>
+        <p class="subtitle">I sent this little teddy with fresh roses just to see your beautiful smile today. ❤️</p>
+        <button class="btn-next" onclick="goToPage(2)">Accept Roses & Open 💖</button>
+    </section>
+
+    <!-- PAGE 2: LUCKY ❤️ SUBBU + PHOTO GALLERY PAGE 1 -->
+    <section class="page" id="page2">
+        <div class="couple-name-banner">
+            <h1 id="displayNames">LUCKY ❤️ SUBBU</h1>
+        </div>
+        <p class="subtitle">Every moment with you feels like a beautiful dream come true...</p>
+
+        <div class="photo-grid">
+            <div class="photo-card">
+                <img id="pic1" src="images/pic1.jpg" alt="Memory 1">
+                <p>My Favorite Smile ❤️</p>
+            </div>
+            <div class="photo-card">
+                <img id="pic2" src="images/pic2.jpg" alt="Memory 2">
+                <p>Together Forever ✨</p>
+            </div>
+            <div class="photo-card">
+                <img id="pic3" src="images/pic3.jpg" alt="Memory 3">
+                <p>Pure Happiness 💕</p>
+            </div>
+        </div>
+
+        <button class="btn-next" onclick="goToPage(3)">See More Memories ➡️</button>
+    </section>
+
+    <!-- PAGE 3: PHOTO GALLERY PAGE 2 -->
+    <section class="page" id="page3">
+        <h1 class="script-title">Our Magical Moments</h1>
+        <p class="subtitle">In a world full of temporary things, you are my perpetual feeling.</p>
+
+        <div class="photo-grid">
+            <div class="photo-card">
+                <img id="pic4" src="images/pic4.jpg" alt="Memory 4">
+                <p>Soulmates 💑</p>
+            </div>
+            <div class="photo-card">
+                <img id="pic5" src="images/pic5.jpg" alt="Memory 5">
+                <p>Endless Love 🌹</p>
+            </div>
+            <div class="photo-card">
+                <img id="pic6" src="images/pic6.jpg" alt="Memory 6">
+                <p>My Whole World 🌍</p>
+            </div>
+        </div>
+
+        <button class="btn-next" onclick="goToPage(4)">One Last Question... 💍</button>
+    </section>
+
+    <!-- PAGE 4: MARRIAGE PROPOSAL & LOVE QUOTES -->
+    <section class="page" id="page4">
+        <div class="proposal-box">
+            <div class="ring-icon">💍</div>
+            <h1 class="proposal-heading">Will You Marry Me?</h1>
+            <p class="proposal-text">
+                From the moment you walked into my life, everything became brighter and meaningful. 
+                I want to hold your hand through every sunrise, every storm, and every lifetime. 
+                Will you be my wife and walk with me forever?
+            </p>
+
+            <!-- Romantic Love Quotes -->
+            <div class="quotes-section">
+                <p>"I don't want a perfect life; I just want a happy life with you by my side forever."</p>
+                <p>"In all the world, there is no heart for me like yours. In all the world, there is no love for you like mine."</p>
+                <p>"Grow old along with me; the best is yet to be. ❤️"</p>
+            </div>
+
+            <div class="proposal-buttons">
+                <button class="btn-yes" onclick="sayYes()">YES, I WILL! ❤️💍</button>
+                <button class="btn-no" id="noBtn" onmouseover="moveNoBtn()" onclick="moveNoBtn()">No 🙈</button>
+            </div>
+
+            <div id="yes-response">
+                🎉💖 Yay!! You just made me the happiest person alive! I Love You Forever! 💖🎉
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMIZATION MODAL -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h3>✨ Customize Names & Photos</h3>
+            <div class="form-group">
+                <label>Enter Your Names:</label>
+                <input type="text" id="inputNames" value="LUCKY ❤️ SUBBU">
+            </div>
+            <div class="form-group">
+                <label>Page 2 - Photo 1:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'pic1')">
+            </div>
+            <div class="form-group">
+                <label>Page 2 - Photo 2:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'pic2')">
+            </div>
+            <div class="form-group">
+                <label>Page 2 - Photo 3:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'pic3')">
+            </div>
+            <div class="form-group">
+                <label>Page 3 - Photo 4:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'pic4')">
+            </div>
+            <div class="form-group">
+                <label>Page 3 - Photo 5:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'pic5')">
+            </div>
+            <div class="form-group">
+                <label>Page 3 - Photo 6:</label>
+                <input type="file" accept="image/*" onchange="previewImage(event, 'pic6')">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-next" style="padding: 8px 20px; font-size: 0.9rem;" onclick="saveAndClose()">Save & Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate Floating Hearts
+        const heartsContainer = document.getElementById('heartsContainer');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💖', '🌹', '💕'][Math.floor(Math.random() * 4)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+        setInterval(createHeart, 450);
+
+        // Page Navigation
+        function goToPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('page' + pageNumber).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Proposal "No" Button Playful Dodge
+        function moveNoBtn() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * 160 - 80;
+            const y = Math.random() * 120 - 60;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Proposal "Yes" Celebration
+        function sayYes() {
+            document.getElementById('yes-response').style.display = 'block';
+            for (let i = 0; i < 30; i++) {
+                setTimeout(createHeart, i * 80);
+            }
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function saveAndClose() {
+            const newNames = document.getElementById('inputNames').value.trim();
+            if (newNames) {
+                document.getElementById('displayNames').innerText = newNames;
+            }
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        function previewImage(imageEvent, imgId) {
+            const file = imageEvent.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(imgId).src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
